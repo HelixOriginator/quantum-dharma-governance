@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Dharma Governance Framework</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{fontFamily:{'inter':['Inter','sans-serif'],'poppins':['Poppins','sans-serif']},colors:{'quantum':{50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81',950:'#1e1b4b'},'dharma':{50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706',700:'#b45309',800:'#92400e',900:'#78350f',950:'#451a03'},'saffron':'#FF6B00','navy':'#0A0E27','deep':'#060918'}}}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#060918;color:#e2e8f0;overflow-x:hidden}
+#qc{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#sp{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#FF6B00,#fbbf24,#6366f1,#818cf8);z-index:9999;transition:width .1s linear;width:0}
+.ng{background:rgba(6,9,24,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(99,102,241,.15)}
+.gb{position:relative;background:rgba(10,14,39,.8);border-radius:16px;overflow:hidden}
+.gb::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,#FF6B00,#6366f1,#fbbf24,#FF6B00);background-size:300% 300%;animation:gs 6s ease infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+@keyframes gs{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.sk{font-family:'Poppins',sans-serif;letter-spacing:.05em}
+.fs{animation:fsa 6s ease-in-out infinite}
+.fm{animation:fsa 4s ease-in-out infinite}
+@keyframes fsa{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.fiu{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.fiu.v{opacity:1;transform:translateY(0)}
+.sc>*{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.sc.v>*:nth-child(1){transition-delay:.1s;opacity:1;transform:translateY(0)}
+.sc.v>*:nth-child(2){transition-delay:.2s;opacity:1;transform:translateY(0)}
+.sc.v>*:nth-child(3){transition-delay:.3s;opacity:1;transform:translateY(0)}
+.sc.v>*:nth-child(4){transition-delay:.4s;opacity:1;transform:translateY(0)}
+.sc.v>*:nth-child(5){transition-delay:.5s;opacity:1;transform:translateY(0)}
+.sc.v>*:nth-child(6){transition-delay:.6s;opacity:1;transform:translateY(0)}
+.qb{height:8px;border-radius:4px;background:rgba(255,255,255,.05);overflow:hidden}
+.qf{height:100%;border-radius:4px;transition:width 1.5s cubic-bezier(.16,1,.3,1);width:0}
+.mb{background-image:radial-gradient(circle at center,transparent 0%,transparent 40%,rgba(99,102,241,.03) 41%,transparent 42%,transparent 60%,rgba(251,191,36,.03) 61%,transparent 62%,transparent 80%,rgba(255,107,0,.02) 81%,transparent 82%);background-size:200px 200px}
+.pc{transition:all .4s cubic-bezier(.16,1,.3,1);border:1px solid rgba(255,255,255,.05)}
+.pc:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.3);box-shadow:0 20px 40px -15px rgba(99,102,241,.15)}
+.tl{background:linear-gradient(180deg,#FF6B00,#6366f1,#fbbf24)}
+.ct{font-variant-numeric:tabular-nums}
+.tb{transition:all .3s ease;border-bottom:2px solid transparent}
+.tb.a{color:#fbbf24;border-bottom-color:#fbbf24}
+.tc{display:none}.tc.a{display:block}
+.es{background:linear-gradient(120deg,rgba(255,107,0,.15) 0%,rgba(255,107,0,.05) 100%);padding:2px 8px;border-radius:4px}
+.eq{background:linear-gradient(120deg,rgba(99,102,241,.15) 0%,rgba(99,102,241,.05) 100%);padding:2px 8px;border-radius:4px}
+.ow{position:absolute;font-size:300px;opacity:.015;font-weight:700;pointer-events:none;user-select:none}
+.gv{background:linear-gradient(135deg,rgba(255,107,0,.15),rgba(99,102,241,.15));border:1px solid rgba(255,107,0,.2)}
+@media print{body{background:#fff;color:#000}.no-print{display:none!important}.gb::before{display:none}.pc{break-inside:avoid;border:1px solid #ddd}}
+@media(max-width:768px){.ht{font-size:2rem!important}.st{font-size:1.75rem!important}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#060918}::-webkit-scrollbar-thumb{background:rgba(99,102,241,.3);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:rgba(99,102,241,.5)}
+</style>
+</head>
+<body class="mb">
+
+<div id="sp" class="no-print"></div>
+<canvas id="qc" class="no-print"></canvas>
+
+<!-- NAV -->
+<nav class="ng fixed top-0 left-0 right-0 z-50 no-print">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-gradient-to-br from-saffron to-quantum-500 flex items-center justify-center">
+<iconify-icon icon="lucide:atom" width="20" class="text-white"></iconify-icon>
+</div>
+<div>
+<span class="text-sm font-semibold text-white tracking-tight">QDG Framework</span>
+<span class="hidden sm:inline text-xs text-gray-500 ml-2">Quantum Dharma Governance</span>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-1">
+<a href="#ex" class="px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">Executive Summary</a>
+<a href="#fw" class="px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">Framework</a>
+<a href="#qe" class="px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">QEU Metric</a>
+<a href="#bn" class="px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">Bengal Vision</a>
+<a href="#dh" class="px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">Sanatana Foundation</a>
+<a href="#pp" class="px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">Policy Proposals</a>
+<a href="#rm" class="px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">Roadmap</a>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="window.print()" class="p-2 text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5" title="Print"><iconify-icon icon="lucide:printer" width="18"></iconify-icon></button>
+<button id="mmb" class="lg:hidden p-2 text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"><iconify-icon icon="lucide:menu" width="20"></iconify-icon></button>
+</div>
+</div>
+</div>
+<div id="mm" class="hidden lg:hidden border-t border-white/5 pb-4 px-4">
+<a href="#ex" class="block py-2 text-sm text-gray-400 hover:text-white">Executive Summary</a>
+<a href="#fw" class="block py-2 text-sm text-gray-400 hover:text-white">Framework</a>
+<a href="#qe" class="block py-2 text-sm text-gray-400 hover:text-white">QEU Metric</a>
+<a href="#bn" class="block py-2 text-sm text-gray-400 hover:text-white">Bengal Vision</a>
+<a href="#dh" class="block py-2 text-sm text-gray-400 hover:text-white">Sanatana Foundation</a>
+<a href="#pp" class="block py-2 text-sm text-gray-400 hover:text-white">Policy Proposals</a>
+<a href="#rm" class="block py-2 text-sm text-gray-400 hover:text-white">Roadmap</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+<div class="absolute inset-0">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-quantum-500/5 rounded-full blur-3xl fs"></div>
+<div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-saffron/5 rounded-full blur-3xl fm" style="animation-delay:-2s"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-dharma-400/3 rounded-full blur-3xl"></div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/[.03] rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-white/[.02] rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] border border-white/[.01] rounded-full"></div>
+<div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+<div class="fiu inline-flex items-center gap-2 gv rounded-full px-4 py-1.5 mb-8">
+<iconify-icon icon="lucide:shield-check" width="14" class="text-saffron"></iconify-icon>
+<span class="text-xs font-medium text-gray-300 tracking-wide">POLICY PROPOSAL FOR GOVERNMENT OF WEST BENGAL &amp; GOVERNMENT OF INDIA</span>
+</div>
+<div class="fiu sk text-dharma-400/60 text-lg mb-6" style="transition-delay:.1s">ॐ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः</div>
+<h1 class="fiu ht text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6" style="transition-delay:.2s">
+Quantum Dharma<br>
+<span class="bg-gradient-to-r from-saffron via-dharma-400 to-quantum-400 bg-clip-text text-transparent">Governance Framework</span>
+</h1>
+<p class="fiu text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-4 leading-relaxed" style="transition-delay:.3s">Integrating Vedic Ethical Principles with Quantum-Enhanced AI for<br class="hidden sm:block"> Ethical Policy Governance in the 21st Century</p>
+<div class="fiu inline-block mt-6 mb-10 bg-white/[.03] border border-white/10 rounded-xl px-6 py-3" style="transition-delay:.4s">
+<div class="flex items-center gap-3 text-sm">
+<span class="text-gray-500">Core Metric:</span>
+<span class="text-white font-mono font-medium">QEU = −Σ pᵢ log pᵢ</span>
+<span class="w-px h-4 bg-white/10"></span>
+<span class="text-gray-500">Quantum Ethical Uncertainty</span>
+</div>
+</div>
+<div class="fiu flex flex-wrap justify-center gap-3 mb-12" style="transition-delay:.5s">
+<div class="flex items-center gap-2 bg-quantum-500/10 border border-quantum-500/20 rounded-full px-4 py-2">
+<iconify-icon icon="lucide:infinity" width="16" class="text-quantum-400"></iconify-icon>
+<span class="text-sm font-medium text-quantum-200">Ṛta — Cosmic Order</span>
+</div>
+<div class="flex items-center gap-2 bg-saffron/10 border border-saffron/20 rounded-full px-4 py-2">
+<iconify-icon icon="lucide:scale" width="16" class="text-saffron"></iconify-icon>
+<span class="text-sm font-medium text-orange-200">Dharma — Contextual Duty</span>
+</div>
+<div class="flex items-center gap-2 bg-dharma-400/10 border border-dharma-400/20 rounded-full px-4 py-2">
+<iconify-icon icon="lucide:heart-handshake" width="16" class="text-dharma-400"></iconify-icon>
+<span class="text-sm font-medium text-yellow-200">Ahimsa — Non-Harm</span>
+</div>
+</div>
+<div class="fiu flex flex-col sm:flex-row items-center justify-center gap-3" style="transition-delay:.6s">
+<a href="#ex" class="group flex items-center gap-2 bg-gradient-to-r from-saffron to-orange-600 text-white font-medium px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:shadow-saffron/20 transition-all duration-300">
+Read Full Proposal
+<iconify-icon icon="lucide:arrow-down" width="18" class="group-hover:translate-y-0.5 transition-transform"></iconify-icon>
+</a>
+<a href="#qe" class="flex items-center gap-2 bg-white/5 border border-white/10 text-white font-medium px-8 py-3.5 rounded-xl hover:bg-white/10 transition-all duration-300">
+<iconify-icon icon="lucide:bar-chart-3" width="18" class="text-quantum-400"></iconify-icon>
+Explore QEU Metric
+</a>
+</div>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+<span class="text-xs text-gray-600">Scroll to explore</span>
+<iconify-icon icon="lucide:chevron-down" width="16" class="text-gray-600"></iconify-icon>
+</div>
+</div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section id="ex" class="relative py-24 sm:py-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-saffron tracking-widest uppercase mb-4">
+<span class="w-8 h-px bg-saffron/50"></span>Executive Summary<span class="w-8 h-px bg-saffron/50"></span>
+</div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">A New Paradigm for <span class="text-dharma-400">Ethical Governance</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto text-lg">Bridging ancient Vedic wisdom with quantum-enhanced artificial intelligence to create governance systems that are fair, resilient, and culturally grounded.</p>
+</div>
+<div class="fiu grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+<div class="gb p-6 text-center"><div class="text-3xl font-bold text-white ct" data-target="3">0</div><div class="text-xs text-gray-500 mt-1">Vedic Pillars Integrated</div></div>
+<div class="gb p-6 text-center"><div class="text-3xl font-bold text-dharma-400 ct" data-target="73" data-suffix="%">0%</div><div class="text-xs text-gray-500 mt-1">QEU Ethical Alignment</div></div>
+<div class="gb p-6 text-center"><div class="text-3xl font-bold text-quantum-400 ct" data-target="216" data-suffix="+">0+</div><div class="text-xs text-gray-500 mt-1">Policy Scenarios Tested</div></div>
+<div class="gb p-6 text-center"><div class="text-3xl font-bold text-saffron ct" data-target="5">0</div><div class="text-xs text-gray-500 mt-1">Framework Components</div></div>
+</div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="fiu pc rounded-2xl bg-white/[.02] p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center"><iconify-icon icon="lucide:alert-triangle" width="20" class="text-red-400"></iconify-icon></div>
+<h3 class="text-lg font-semibold text-white">The Governance Crisis</h3>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed">AI ethics frameworks are overwhelmingly Western-derived, failing to protect minority interests and ignoring non-Western philosophical traditions</span></li>
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed">Quantum computing expands decision spaces exponentially, amplifying biases and creating ethical trade-offs invisible to classical assessment</span></li>
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed">Policy decisions in climate, health, and conflict affect diverse populations whose value systems remain unrepresented in algorithmic design</span></li>
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed">No existing framework synthesizes quantum computing, AI governance, and culturally grounded ethics for high-stakes policy decisions</span></li>
+</ul>
+</div>
+<div class="fiu pc rounded-2xl bg-white/[.02] p-8" style="transition-delay:.2s">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center"><iconify-icon icon="lucide:sparkles" width="20" class="text-green-400"></iconify-icon></div>
+<h3 class="text-lg font-semibold text-white">The Quantum Dharma Solution</h3>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:check" width="12" class="text-green-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed"><span class="es text-white">Vedic-Quantum Integration:</span> Maps Ṛta, Dharma, Ahimsa to quantum principles (superposition, entanglement, collapse) for culturally grounded AI ethics</span></li>
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:check" width="12" class="text-green-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed"><span class="eq text-white">QEU Metric:</span> First quantitative tool measuring ethical uncertainty in quantum-AI decision spaces across divergence, bias, and ripple effects</span></li>
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:check" width="12" class="text-green-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed"><span class="es text-white">Entangled Ethics Architecture:</span> Inspired by Indra's Net — ethical modules maintain correlations ensuring systemic coherence without centralized control</span></li>
+<li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:check" width="12" class="text-green-400"></iconify-icon></span><span class="text-sm text-gray-400 leading-relaxed"><span class="eq text-white">Proven in Simulation:</span> 73% alignment with expert ethical rankings in climate and conflict policy scenarios with zero human data collection</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FRAMEWORK -->
+<section id="fw" class="relative py-24 sm:py-32">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-quantum-950/20 to-transparent"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-quantum-400 tracking-widest uppercase mb-4"><span class="w-8 h-px bg-quantum-400/50"></span>The Framework<span class="w-8 h-px bg-quantum-400/50"></span></div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Five Pillars of <span class="text-quantum-400">Quantum Dharma</span> Governance</h2>
+<p class="text-gray-400 max-w-2xl mx-auto text-lg">A comprehensive architecture bridging Eastern metaphysics with Western quantum mechanics for policy-level AI governance.</p>
+</div>
+<div class="sc grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+<div class="pc rounded-2xl bg-white/[.02] p-7">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-saffron/20 to-saffron/5 flex items-center justify-center mb-5"><iconify-icon icon="lucide:infinity" width="24" class="text-saffron"></iconify-icon></div>
+<h3 class="text-base font-semibold text-white mb-2">Ṛta ↔ Superposition</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-4">Cosmic order maps to quantum superposition — multiple valid policy states coexist until contextual factors guide ethical collapse toward systemic harmony.</p>
+<div class="flex flex-wrap gap-1.5"><span class="text-xs bg-saffron/10 text-saffron px-2 py-0.5 rounded-md">Ecological Balance</span><span class="text-xs bg-saffron/10 text-saffron px-2 py-0.5 rounded-md">Intergenerational Equity</span><span class="text-xs bg-saffron/10 text-saffron px-2 py-0.5 rounded-md">Systemic Coherence</span></div>
+</div>
+<div class="pc rounded-2xl bg-white/[.02] p-7">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-dharma-400/20 to-dharma-400/5 flex items-center justify-center mb-5"><iconify-icon icon="lucide:scale" width="24" class="text-dharma-400"></iconify-icon></div>
+<h3 class="text-base font-semibold text-white mb-2">Dharma ↔ Wavefunction Collapse</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-4">Context-sensitive duty guides value-based resolution — the measurement problem becomes an opportunity to inject ethical guidance at the moment of decision.</p>
+<div class="flex flex-wrap gap-1.5"><span class="text-xs bg-dharma-400/10 text-dharma-400 px-2 py-0.5 rounded-md">Situational Ethics</span><span class="text-xs bg-dharma-400/10 text-dharma-400 px-2 py-0.5 rounded-md">Stakeholder Context</span><span class="text-xs bg-dharma-400/10 text-dharma-400 px-2 py-0.5 rounded-md">Cultural Fit</span></div>
+</div>
+<div class="pc rounded-2xl bg-white/[.02] p-7">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-400/20 to-green-400/5 flex items-center justify-center mb-5"><iconify-icon icon="lucide:heart-handshake" width="24" class="text-green-400"></iconify-icon></div>
+<h3 class="text-base font-semibold text-white mb-2">Ahimsa ↔ Quantum Compassion</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-4">Proactive harm simulation across cultural contexts — variational quantum algorithms model harm probabilities for underrepresented populations before implementation.</p>
+<div class="flex flex-wrap gap-1.5"><span class="text-xs bg-green-400/10 text-green-400 px-2 py-0.5 rounded-md">Harm Prevention</span><span class="text-xs bg-green-400/10 text-green-400 px-2 py-0.5 rounded-md">Cultural Sensitivity</span><span class="text-xs bg-green-400/10 text-green-400 px-2 py-0.5 rounded-md">Bias Detection</span></div>
+</div>
+<div class="pc rounded-2xl bg-white/[.02] p-7">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-quantum-400/20 to-quantum-400/5 flex items-center justify-center mb-5"><iconify-icon icon="lucide:network" width="24" class="text-quantum-400"></iconify-icon></div>
+<h3 class="text-base font-semibold text-white mb-2">Indra's Net ↔ Entangled Ethics</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-4">Interconnected jewels mirror entangled ethical modules — decisions in one subsystem (fairness) automatically influence others (privacy, sustainability) without central control.</p>
+<div class="flex flex-wrap gap-1.5"><span class="text-xs bg-quantum-400/10 text-quantum-400 px-2 py-0.5 rounded-md">Non-Local Ethics</span><span class="text-xs bg-quantum-400/10 text-quantum-400 px-2 py-0.5 rounded-md">Emergent Behavior</span><span class="text-xs bg-quantum-400/10 text-quantum-400 px-2 py-0.5 rounded-md">Systemic Coherence</span></div>
+</div>
+<div class="pc rounded-2xl bg-white/[.02] p-7">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-400/20 to-purple-400/5 flex items-center justify-center mb-5"><iconify-icon icon="lucide:git-branch" width="24" class="text-purple-400"></iconify-icon></div>
+<h3 class="text-base font-semibold text-white mb-2">Karma ↔ Quantum Simulation</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-4">Long-term consequence tracing through quantum circuit evolution — policies evaluated across temporal scales revealing non-local spatial and temporal effects.</p>
+<div class="flex flex-wrap gap-1.5"><span class="text-xs bg-purple-400/10 text-purple-400 px-2 py-0.5 rounded-md">Temporal Impact</span><span class="text-xs bg-purple-400/10 text-purple-400 px-2 py-0.5 rounded-md">Entropy Analysis</span><span class="text-xs bg-purple-400/10 text-purple-400 px-2 py-0.5 rounded-md">Future Generations</span></div>
+</div>
+<div class="pc rounded-2xl bg-gradient-to-br from-quantum-950/80 to-deep p-7 border-quantum-500/20">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-quantum-500 to-saffron flex items-center justify-center mb-5"><iconify-icon icon="lucide:brain-circuit" width="24" class="text-white"></iconify-icon></div>
+<h3 class="text-base font-semibold text-white mb-2">QEU Metric Engine</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-4">The unifying computational core — Quantum Ethical Uncertainty quantifies ambiguity across three dimensions: ethical divergence, bias sensitivity, and ripple effect magnitude.</p>
+<div class="bg-white/5 rounded-lg p-3 font-mono text-sm text-dharma-400">QEU = α·QEU<sub>D</sub> + β·QEU<sub>B</sub> + γ·QEU<sub>R</sub></div>
+</div>
+</div>
+<!-- Mapping Table -->
+<div class="fiu mt-16 gb p-6 sm:p-8 overflow-x-auto">
+<h3 class="text-base font-semibold text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:table-2" width="18" class="text-quantum-400"></iconify-icon>Quantum-Vedic Correspondence Matrix</h3>
+<table class="w-full text-sm min-w-[640px]">
+<thead><tr class="border-b border-white/10"><th class="text-left text-gray-500 font-medium pb-3 pr-4">Quantum Principle</th><th class="text-left text-gray-500 font-medium pb-3 pr-4">Vedic Concept</th><th class="text-left text-gray-500 font-medium pb-3 pr-4">Governance Application</th><th class="text-left text-gray-500 font-medium pb-3">AI Implementation</th></tr></thead>
+<tbody class="text-gray-400">
+<tr class="border-b border-white/5"><td class="py-3 pr-4 text-quantum-300">Superposition</td><td class="py-3 pr-4 text-saffron">Anekāntavāda</td><td class="py-3 pr-4">Multiple valid policy perspectives</td><td class="py-3">Value-weighted option superposition</td></tr>
+<tr class="border-b border-white/5"><td class="py-3 pr-4 text-quantum-300">Entanglement</td><td class="py-3 pr-4 text-saffron">Indra's Net</td><td class="py-3 pr-4">Interconnected policy domains</td><td class="py-3">Cross-module ethical correlation</td></tr>
+<tr class="border-b border-white/5"><td class="py-3 pr-4 text-quantum-300">Wavefunction Collapse</td><td class="py-3 pr-4 text-saffron">Dharma + Ṛta</td><td class="py-3 pr-4">Context-guided decision resolution</td><td class="py-3">Value-based measurement protocol</td></tr>
+<tr class="border-b border-white/5"><td class="py-3 pr-4 text-quantum-300">Decoherence</td><td class="py-3 pr-4 text-saffron">Situational Dharma</td><td class="py-3 pr-4">Practical constraint integration</td><td class="py-3">Context-dependent state reduction</td></tr>
+<tr><td class="py-3 pr-4 text-quantum-300">Non-Locality</td><td class="py-3 pr-4 text-saffron">Karma</td><td class="py-3 pr-4">Long-term spatial/temporal effects</td><td class="py-3">Multi-scale consequence tracing</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- QEU METRIC -->
+<section id="qe" class="relative py-24 sm:py-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-dharma-400 tracking-widest uppercase mb-4"><span class="w-8 h-px bg-dharma-400/50"></span>Core Innovation<span class="w-8 h-px bg-dharma-400/50"></span></div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Quantum Ethical Uncertainty <span class="text-dharma-400">Metric</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto text-lg">The world's first quantitative tool for measuring ethical reliability in quantum-AI decision spaces.</p>
+</div>
+<div class="fiu gb p-8 sm:p-10 mb-12 text-center">
+<div class="text-xs text-gray-500 tracking-widest uppercase mb-4">Mathematical Definition</div>
+<div class="text-2xl sm:text-3xl font-mono text-white mb-3">QEU = −∑ pᵢ log pᵢ</div>
+<div class="text-sm text-gray-500 max-w-xl mx-auto">Where pᵢ represents the probability of the i-th ethical outcome in a quantum superposition of policy scenarios. Higher QEU indicates greater ethical ambiguity requiring additional scrutiny.</div>
+</div>
+<div class="grid lg:grid-cols-3 gap-6 mb-12">
+<div class="fiu pc rounded-2xl bg-white/[.02] p-7">
+<div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-saffron/10 flex items-center justify-center"><iconify-icon icon="lucide:compass" width="20" class="text-saffron"></iconify-icon></div><div><h3 class="text-sm font-semibold text-white">QEU<sub>D</sub> — Ethical Divergence</h3><p class="text-xs text-gray-500">Deviation from Vedic baselines</p></div></div>
+<div class="space-y-4">
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Ṛta Misalignment</span><span class="text-saffron font-medium">0.73</span></div><div class="qb"><div class="qf bg-gradient-to-r from-saffron to-orange-400" data-width="73"></div></div></div>
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Dharma Context Gap</span><span class="text-saffron font-medium">0.58</span></div><div class="qb"><div class="qf bg-gradient-to-r from-saffron to-orange-400" data-width="58"></div></div></div>
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Ahimsa Harm Score</span><span class="text-saffron font-medium">0.65</span></div><div class="qb"><div class="qf bg-gradient-to-r from-saffron to-orange-400" data-width="65"></div></div></div>
+<div class="pt-2 border-t border-white/5"><div class="font-mono text-xs text-gray-500">QEU<sub>D</sub> = w<sub>Ṛ</sub>·d<sub>Ṛta</sub> + w<sub>Dh</sub>·d<sub>Dharma</sub> + w<sub>A</sub>·d<sub>Ahimsa</sub></div></div>
+</div>
+</div>
+<div class="fiu pc rounded-2xl bg-white/[.02] p-7" style="transition-delay:.15s">
+<div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-quantum-500/10 flex items-center justify-center"><iconify-icon icon="lucide:activity" width="20" class="text-quantum-400"></iconify-icon></div><div><h3 class="text-sm font-semibold text-white">QEU<sub>B</sub> — Bias Sensitivity</h3><p class="text-xs text-gray-500">Outcome variability under perturbation</p></div></div>
+<div class="space-y-4">
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Demographic Perturbation</span><span class="text-quantum-400 font-medium">0.68</span></div><div class="qb"><div class="qf bg-gradient-to-r from-quantum-500 to-quantum-300" data-width="68"></div></div></div>
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Preference Uncertainty</span><span class="text-quantum-400 font-medium">0.71</span></div><div class="qb"><div class="qf bg-gradient-to-r from-quantum-500 to-quantum-300" data-width="71"></div></div></div>
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Resource Constraint Shift</span><span class="text-quantum-400 font-medium">0.54</span></div><div class="qb"><div class="qf bg-gradient-to-r from-quantum-500 to-quantum-300" data-width="54"></div></div></div>
+<div class="pt-2 border-t border-white/5"><div class="font-mono text-xs text-gray-500">QEU<sub>B</sub> = (1/N) ∑ ||O(D+δᵢ) − O(D)||</div></div>
+</div>
+</div>
+<div class="fiu pc rounded-2xl bg-white/[.02] p-7" style="transition-delay:.3s">
+<div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-dharma-400/10 flex items-center justify-center"><iconify-icon icon="lucide:waves" width="20" class="text-dharma-400"></iconify-icon></div><div><h3 class="text-sm font-semibold text-white">QEU<sub>R</sub> — Ripple Effect</h3><p class="text-xs text-gray-500">Downstream cross-domain impacts</p></div></div>
+<div class="space-y-4">
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Climate → Food Security</span><span class="text-dharma-400 font-medium">0.81</span></div><div class="qb"><div class="qf bg-gradient-to-r from-dharma-400 to-yellow-300" data-width="81"></div></div></div>
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Policy → Migration Risk</span><span class="text-dharma-400 font-medium">0.73</span></div><div class="qb"><div class="qf bg-gradient-to-r from-dharma-400 to-yellow-300" data-width="73"></div></div></div>
+<div><div class="flex justify-between text-xs mb-1.5"><span class="text-gray-400">Economic → Social Cohesion</span><span class="text-dharma-400 font-medium">0.86</span></div><div class="qb"><div class="qf bg-gradient-to-r from-dharma-400 to-yellow-300" data-width="86"></div></div></div>
+<div class="pt-2 border-t border-white/5"><div class="font-mono text-xs text-gray-500">QEU<sub>R</sub> = ∑ E(impact<sub>j</sub>|decision<sub>d</sub>)·w<sub>j</sub></div></div>
+</div>
+</div>
+</div>
+<!-- Validation -->
+<div class="fiu gb p-8">
+<h3 class="text-base font-semibold text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:check-circle-2" width="18" class="text-green-400"></iconify-icon>Computational Validation Results</h3>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<div class="bg-white/[.02] rounded-xl p-5"><div class="text-2xl font-bold text-green-400 mb-1">r = 0.45–0.62</div><div class="text-xs text-gray-500">Convergent Validity</div><div class="text-xs text-gray-600 mt-1">Correlation with existing ethical metrics</div></div>
+<div class="bg-white/[.02] rounded-xl p-5"><div class="text-2xl font-bold text-green-400 mb-1">r = 0.18</div><div class="text-xs text-gray-500">Discriminant Validity</div><div class="text-xs text-gray-600 mt-1">Low correlation with technical uncertainty</div></div>
+<div class="bg-white/[.02] rounded-xl p-5"><div class="text-2xl font-bold text-green-400 mb-1">τ = 0.73</div><div class="text-xs text-gray-500">Expert Alignment (Kendall's)</div><div class="text-xs text-gray-600 mt-1">p &lt; 0.001, 30 published scenarios</div></div>
+<div class="bg-white/[.02] rounded-xl p-5"><div class="text-2xl font-bold text-green-400 mb-1">73%</div><div class="text-xs text-gray-500">Directional Agreement</div><div class="text-xs text-gray-600 mt-1">With published ethical critiques</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BENGAL VISION -->
+<section id="bn" class="relative py-24 sm:py-32 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-saffron/[.03] to-transparent"></div>
+<div class="ow top-10 right-0 text-saffron" style="font-family:serif">ॐ</div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-saffron tracking-widest uppercase mb-4"><span class="w-8 h-px bg-saffron/50"></span>Bengal Renaissance 2.0<span class="w-8 h-px bg-saffron/50"></span></div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">West Bengal as India's <span class="text-saffron">Quantum Dharma</span> Hub</h2>
+<p class="text-gray-400 max-w-2xl mx-auto text-lg">From Raja Ram Mohan Roy to quantum ethics — Bengal's renaissance spirit reimagined for the AI age.</p>
+</div>
+<div class="grid lg:grid-cols-5 gap-5 mb-12">
+<div class="lg:col-span-2 fiu pc rounded-2xl bg-white/[.02] p-7">
+<h3 class="text-sm font-semibold text-saffron mb-5 flex items-center gap-2"><iconify-icon icon="lucide:history" width="16"></iconify-icon>Renaissance Heritage</h3>
+<div class="space-y-4">
+<div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-saffron/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold text-saffron">01</span></div><div><div class="text-sm font-medium text-white">Brahmo Samaj (1828)</div><div class="text-xs text-gray-500">Social reform &amp; rational spirituality</div></div></div>
+<div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-saffron/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold text-saffron">02</span></div><div><div class="text-sm font-medium text-white">Vivekananda's Global Mission (1893)</div><div class="text-xs text-gray-500">Vedic philosophy at Parliament of Religions</div></div></div>
+<div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-saffron/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold text-saffron">03</span></div><div><div class="text-sm font-medium text-white">Tagore's Universalism</div><div class="text-xs text-gray-500">Visva-Bharati — cultural bridge East-West</div></div></div>
+<div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-saffron/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold text-saffron">04</span></div><div><div class="text-sm font-medium text-white">Satyendra Nath Bose (1924)</div><div class="text-xs text-gray-500">Bose-Einstein statistics — quantum foundations</div></div></div>
+<div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-saffron/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold text-saffron">05</span></div><div><div class="text-sm font-medium text-white">Meghnad Saha (1920)</div><div class="text-xs text-gray-500">Saha ionization equation — astrophysics</div></div></div>
+</div>
+</div>
+<div class="lg:col-span-3 fiu pc rounded-2xl bg-white/[.02] p-7" style="transition-delay:.15s">
+<h3 class="text-sm font-semibold text-quantum-400 mb-5 flex items-center gap-2"><iconify-icon icon="lucide:rocket" width="16"></iconify-icon>Proposed Quantum Dharma Initiatives for West Bengal</h3>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="bg-white/[.02] rounded-xl p-4 border border-white/5"><iconify-icon icon="lucide:building-2" width="18" class="text-saffron mb-2"></iconify-icon><div class="text-sm font-medium text-white mb-1">Bengal Quantum Ethics Institute</div><div class="text-xs text-gray-500">World's first center integrating Vedic philosophy with quantum-AI governance research</div></div>
+<div class="bg-white/[.02] rounded-xl p-4 border border-white/5"><iconify-icon icon="lucide:graduation-cap" width="18" class="text-quantum-400 mb-2"></iconify-icon><div class="text-sm font-medium text-white mb-1">QDG Curriculum at Universities</div><div class="text-xs text-gray-500">Jadavpur, Presidency, Calcutta University — specialized programs in ethical AI governance</div></div>
+<div class="bg-white/[.02] rounded-xl p-4 border border-white/5"><iconify-icon icon="lucide:globe" width="18" class="text-dharma-400 mb-2"></iconify-icon><div class="text-sm font-medium text-white mb-1">Bengal-Bharat AI Ethics Sandbox</div><div class="text-xs text-gray-500">Living lab for testing QDG framework on real policy scenarios — climate, health, Sundarbans</div></div>
+<div class="bg-white/[.02] rounded-xl p-4 border border-white/5"><iconify-icon icon="lucide:indian-rupee" width="18" class="text-green-400 mb-2"></iconify-icon><div class="text-sm font-medium text-white mb-1">Quantum Dharma Startup Ecosystem</div><div class="text-xs text-gray-500">Incubation hub at Salt Lake/Webel for startups building culturally-aware AI governance tools</div></div>
+<div class="bg-white/[.02] rounded-xl p-4 border border-white/5"><iconify-icon icon="lucide:landmark" width="18" class="text-purple-400 mb-2"></iconify-icon><div class="text-sm font-medium text-white mb-1">Dharma-Driven AI Audit Office</div><div class="text-xs text-gray-500">State-level body to audit government AI systems using QEU thresholds and Vedic benchmarks</div></div>
+<div class="bg-white/[.02] rounded-xl p-4 border border-white/5"><iconify-icon icon="lucide:book-open" width="18" class="text-rose-400 mb-2"></iconify-icon><div class="text-sm font-medium text-white mb-1">Sanatana Vidya Kendra Network</div><div class="text-xs text-gray-500">District-level centers teaching Dharmic ethics, yoga, meditation alongside digital literacy</div></div>
+</div>
+</div>
+</div>
+<!-- Advantage -->
+<div class="fiu gb p-8 sm:p-10">
+<div class="flex flex-col lg:flex-row items-start gap-8">
+<div class="flex-1">
+<h3 class="text-xl font-semibold text-white mb-4">Why West Bengal? The Unique Advantage</h3>
+<div class="space-y-3 text-sm text-gray-400 leading-relaxed">
+<p><span class="text-white font-medium">Bengal gave quantum mechanics its foundation</span> — S.N. Bose's work underpins the quantum computing revolution. Now Bengal can lead in quantum ethics.</p>
+<p><span class="text-white font-medium">The Bengal Renaissance demonstrated</span> that Indian philosophical traditions can engage with modernity on equal terms. The QDG framework extends this legacy to AI governance.</p>
+<p><span class="text-white font-medium">Cultural depth meets intellectual rigor</span> — No other Indian state combines this depth of Dharmic scholarship with scientific tradition, making Bengal the natural home for quantum-Vedic integration.</p>
+</div>
+</div>
+<div class="flex-shrink-0 bg-white/[.03] rounded-xl p-5 text-center min-w-[200px]">
+<div class="text-4xl font-bold text-saffron mb-1">200+</div><div class="text-xs text-gray-500">Years of Renaissance Legacy</div>
+<div class="w-12 h-px bg-white/10 mx-auto my-3"></div>
+<div class="text-4xl font-bold text-quantum-400 mb-1">1924</div><div class="text-xs text-gray-500">Bose's Quantum Breakthrough</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SANATANA DHARMA -->
+<section id="dh" class="relative py-24 sm:py-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-dharma-400 tracking-widest uppercase mb-4"><span class="w-8 h-px bg-dharma-400/50"></span>Civilizational Foundation<span class="w-8 h-px bg-dharma-400/50"></span></div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Sanatana Dharma as <span class="text-dharma-400">Governance Foundation</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto text-lg">Evidence-based principles from the world's oldest living philosophical tradition, validated by modern science and proven through millennia of civilizational continuity.</p>
+</div>
+<div class="fiu">
+<div class="flex border-b border-white/10 mb-8 overflow-x-auto">
+<button class="tb a text-sm font-medium text-gray-400 px-5 py-3 whitespace-nowrap" data-tab="eq">Egalitarian Foundations</button>
+<button class="tb text-sm font-medium text-gray-400 px-5 py-3 whitespace-nowrap" data-tab="mk">Mahakumbh Model</button>
+<button class="tb text-sm font-medium text-gray-400 px-5 py-3 whitespace-nowrap" data-tab="yg">Yoga &amp; Science</button>
+<button class="tb text-sm font-medium text-gray-400 px-5 py-3 whitespace-nowrap" data-tab="sn">Saints of Dharma</button>
+</div>
+<!-- Tab: Equality -->
+<div class="tc a" id="t-eq">
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="space-y-4">
+<div class="pc rounded-xl bg-white/[.02] p-6"><div class="sk text-dharma-400 text-lg mb-2">तत्त्वमसि</div><div class="text-sm font-semibold text-white mb-1">Tat Tvam Asi — "Thou Art That"</div><div class="text-xs text-gray-500 mb-2">Chandogya Upanishad 6.8.7</div><p class="text-sm text-gray-400">Every being carries identical divine essence. If all are Brahman, hierarchy becomes philosophically impossible — the foundation of Dharmic equality.</p></div>
+<div class="pc rounded-xl bg-white/[.02] p-6"><div class="sk text-dharma-400 text-lg mb-2">वसुधैव कुटुम्बकम्</div><div class="text-sm font-semibold text-white mb-1">Vasudhaiva Kutumbakam — "The World is One Family"</div><div class="text-xs text-gray-500 mb-2">Maha Upanishad 6.71-73</div><p class="text-sm text-gray-400">Transcends all artificial divisions — caste, race, nationality. The magnanimous soul sees all beings as family members.</p></div>
+<div class="pc rounded-xl bg-white/[.02] p-6"><div class="sk text-dharma-400 text-lg mb-2">अहं ब्रह्मास्मि</div><div class="text-sm font-semibold text-white mb-1">Aham Brahmasmi — "I am Brahman"</div><div class="text-xs text-gray-500 mb-2">Brihadaranyaka Upanishad 1.4.10</div><p class="text-sm text-gray-400">Democratic spirituality — every soul can realize the divine directly. No intermediary, no priestly monopoly.</p></div>
+</div>
+<div class="pc rounded-xl bg-white/[.02] p-6">
+<h3 class="text-sm font-semibold text-white mb-4">Evidence: Social Mobility in Dharma</h3>
+<div class="space-y-3">
+<div class="flex items-start gap-3 bg-white/[.02] rounded-lg p-3"><div class="w-8 h-8 rounded-lg bg-saffron/10 flex items-center justify-center flex-shrink-0 text-xs">🗿</div><div><div class="text-sm font-medium text-white">Valmiki: Tribal Hunter → Adi Kavi</div><div class="text-xs text-gray-500">Composed Ramayana (24,000 verses). Born in Kirata community.</div></div></div>
+<div class="flex items-start gap-3 bg-white/[.02] rounded-lg p-3"><div class="w-8 h-8 rounded-lg bg-quantum-500/10 flex items-center justify-center flex-shrink-0 text-xs">📚</div><div><div class="text-sm font-medium text-white">Ved Vyasa: Fisherwoman's Son → Veda Compiler</div><div class="text-xs text-gray-500">Son of Satyavati. Compiled four Vedas, authored Mahabharata. One of seven Chiranjivi.</div></div></div>
+<div class="flex items-start gap-3 bg-white/[.02] rounded-lg p-3"><div class="w-8 h-8 rounded-lg bg-dharma-400/10 flex items-center justify-center flex-shrink-0 text-xs">🔍</div><div><div class="text-sm font-medium text-white">Satyakama Jabala: Unknown Parentage → Vedic Sage</div><div class="text-xs text-gray-500">"Only a true Brahmin speaks such truth." (Chandogya Upanishad 4.4)</div></div></div>
+<div class="flex items-start gap-3 bg-white/[.02] rounded-lg p-3"><div class="w-8 h-8 rounded-lg bg-green-400/10 flex items-center justify-center flex-shrink-0 text-xs">🎵</div><div><div class="text-sm font-medium text-white">Sant Ravidas: Cobbler → Spiritual Master</div><div class="text-xs text-gray-500">"Whoever worships God belongs to God." Disciple: Queen Mirabai.</div></div></div>
+<div class="flex items-start gap-3 bg-white/[.02] rounded-lg p-3"><div class="w-8 h-8 rounded-lg bg-purple-400/10 flex items-center justify-center flex-shrink-0 text-xs">⚖️</div><div><div class="text-sm font-medium text-white">Vidura: Maid's Son → Prime Minister</div><div class="text-xs text-gray-500">Son of Parishrami. Counselor to Dhritarashtra, renowned for Dharmic wisdom.</div></div></div>
+</div>
+<div class="mt-4 p-3 bg-saffron/5 border border-saffron/10 rounded-lg"><div class="text-xs text-gray-400"><span class="text-saffron font-medium">Gita 4.13:</span> "The four-fold order was created by Me according to divisions of <span class="text-white">quality (guna)</span> and <span class="text-white">action (karma)</span>" — NOT birth.</div></div>
+</div>
+</div>
+</div>
+<!-- Tab: Mahakumbh -->
+<div class="tc" id="t-mk">
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="pc rounded-xl bg-white/[.02] p-7">
+<h3 class="text-base font-semibold text-white mb-4">Mahakumbh: The Ultimate Governance Case Study</h3>
+<p class="text-sm text-gray-400 mb-5 leading-relaxed">The Mahakumbh Mela — attracting over <span class="text-white font-medium">45 crore (450 million)</span> people across 45 days — demonstrates unparalleled organizational efficiency that Harvard Business Review called "the most efficiently organized human gathering in history."</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3"><iconify-icon icon="lucide:shield-check" width="16" class="text-green-400"></iconify-icon><span class="text-sm text-gray-400"><span class="text-white">Zero major incidents</span> — discipline without force</span></div>
+<div class="flex items-center gap-3"><iconify-icon icon="lucide:home" width="16" class="text-quantum-400"></iconify-icon><span class="text-sm text-gray-400"><span class="text-white">100,000+ toilets</span>, 50,000 tents, 5,000 medical units</span></div>
+<div class="flex items-center gap-3"><iconify-icon icon="lucide:camera" width="16" class="text-saffron"></iconify-icon><span class="text-sm text-gray-400"><span class="text-white">1,000+ AI cameras</span> and drones for real-time crowd management</span></div>
+<div class="flex items-center gap-3"><iconify-icon icon="lucide:users" width="16" class="text-dharma-400"></iconify-icon><span class="text-sm text-gray-400"><span class="text-white">Self-regulated</span> — spiritual consciousness fosters order</span></div>
+</div>
+</div>
+<div class="pc rounded-xl bg-white/[.02] p-7">
+<h3 class="text-base font-semibold text-white mb-4">Governance Lessons for AI Integration</h3>
+<div class="space-y-4">
+<div class="bg-white/[.02] rounded-lg p-4 border border-white/5"><div class="text-sm font-medium text-white mb-1">Cultural Consciousness &gt; Coercive Control</div><div class="text-xs text-gray-500">Mahakumbh proves that shared values create order more effectively than surveillance. AI systems should encode cultural values, not just rules.</div></div>
+<div class="bg-white/[.02] rounded-lg p-4 border border-white/5"><div class="text-sm font-medium text-white mb-1">Scalable Self-Organization</div><div class="text-xs text-gray-500">Distributed coordination at massive scale. Quantum-AI should enable emergent self-organization rather than centralized command-and-control.</div></div>
+<div class="bg-white/[.02] rounded-lg p-4 border border-white/5"><div class="text-sm font-medium text-white mb-1">Temporary Infrastructure Excellence</div><div class="text-xs text-gray-500">Build-dismantle efficiency. AI-optimized resource allocation should learn from Mahakumbh's ability to create and dissolve complex infrastructure.</div></div>
+<div class="bg-white/[.02] rounded-lg p-4 border border-white/5"><div class="text-sm font-medium text-white mb-1">Interfaith Harmony at Scale</div><div class="text-xs text-gray-500">Multiple traditions coexist peacefully. Sarva Dharma Sambhava as operational principle for multi-stakeholder AI governance.</div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab: Yoga -->
+<div class="tc" id="t-yg">
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="pc rounded-xl bg-white/[.02] p-7">
+<h3 class="text-base font-semibold text-white mb-4">Yoga &amp; Meditation: Science-Validated Wisdom</h3>
+<p class="text-sm text-gray-400 mb-5 leading-relaxed">Sanatana Dharma's practical tools for human well-being are now validated by modern neuroscience — offering evidence-based approaches to governance challenges.</p>
+<div class="space-y-3">
+<div class="flex gap-3 items-start"><iconify-icon icon="lucide:brain" width="16" class="text-quantum-400 mt-0.5"></iconify-icon><div><div class="text-sm text-white font-medium">Neurological Benefits</div><div class="text-xs text-gray-500">Lutz et al. (2015): Meditation enhances attention regulation. Davidson's research confirms structural brain changes.</div></div></div>
+<div class="flex gap-3 items-start"><iconify-icon icon="lucide:heart-pulse" width="16" class="text-rose-400 mt-0.5"></iconify-icon><div><div class="text-sm text-white font-medium">Mental Health Impact</div><div class="text-xs text-gray-500">Shankar (2021): Comprehensive review confirms yoga's efficacy in reducing anxiety, depression, PTSD.</div></div></div>
+<div class="flex gap-3 items-start"><iconify-icon icon="lucide:sparkles" width="16" class="text-dharma-400 mt-0.5"></iconify-icon><div><div class="text-sm text-white font-medium">Three Paths of Gita</div><div class="text-xs text-gray-500">Karma Yoga (selfless action), Jnana Yoga (knowledge), Bhakti Yoga (devotion) — harmonize with contemporary mindfulness.</div></div></div>
+</div>
+</div>
+<div class="pc rounded-xl bg-white/[.02] p-7">
+<h3 class="text-base font-semibold text-white mb-4">Policy Integration Proposal</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-3 bg-green-500/5 rounded-lg p-4 border border-green-500/10"><iconify-icon icon="lucide:check-circle" width="16" class="text-green-400 mt-0.5"></iconify-icon><div><div class="text-sm text-white font-medium">Yoga in Public Institutions</div><div class="text-xs text-gray-500">Mandatory yoga sessions in government offices, schools, healthcare facilities.</div></div></div>
+<div class="flex items-start gap-3 bg-green-500/5 rounded-lg p-4 border border-green-500/10"><iconify-icon icon="lucide:check-circle" width="16" class="text-green-400 mt-0.5"></iconify-icon><div><div class="text-sm text-white font-medium">Meditation Rooms in AI Development Centers</div><div class="text-xs text-gray-500">Ethical AI development requires clarity of mind. Meditation spaces in all AI labs.</div></div></div>
+<div class="flex items-start gap-3 bg-green-500/5 rounded-lg p-4 border border-green-500/10"><iconify-icon icon="lucide:check-circle" width="16" class="text-green-400 mt-0.5"></iconify-icon><div><div class="text-sm text-white font-medium">Dharmic Ethics Training for Policymakers</div><div class="text-xs text-gray-500">Gita-based leadership programs integrating Karma Yoga with modern administration.</div></div></div>
+<div class="flex items-start gap-3 bg-green-500/5 rounded-lg p-4 border border-green-500/10"><iconify-icon icon="lucide:check-circle" width="16" class="text-green-400 mt-0.5"></iconify-icon><div><div class="text-sm text-white font-medium">Research Funding for Consciousness Studies</div><div class="text-xs text-gray-500">State-sponsored research on meditation's impact on decision-making in governance.</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab: Saints -->
+<div class="tc" id="t-sn">
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="text-2xl mb-2">🏹</div><div class="text-sm font-semibold text-white">Valmiki Maharshi</div><div class="text-xs text-saffron mb-2">Tribal Hunter → Adi Kavi</div><div class="text-xs text-gray-500">Composed Ramayana. From highway robber to India's First Poet through transformation.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="text-2xl mb-2">📜</div><div class="text-sm font-semibold text-white">Ved Vyasa</div><div class="text-xs text-quantum-400 mb-2">Fisherwoman's Son → Veda Compiler</div><div class="text-xs text-gray-500">Compiled four Vedas, authored Mahabharata. One of seven immortals (Chiranjivi).</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="text-2xl mb-2">🔥</div><div class="text-sm font-semibold text-white">Sant Ravidas</div><div class="text-xs text-dharma-400 mb-2">Cobbler → Spiritual Master</div><div class="text-xs text-gray-500">Queen Mirabai's guru. "Whoever worships God belongs to God." Ravidas Panth: millions.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="text-2xl mb-2">🕉️</div><div class="text-sm font-semibold text-white">Sant Chokhamela</div><div class="text-xs text-green-400 mb-2">Mahar Community → Vitthala Devotee</div><div class="text-xs text-gray-500">Worshipped at Pandharpur. 70+ abhangas. Broke caste barriers in Bhakti movement.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="text-2xl mb-2">🧵</div><div class="text-sm font-semibold text-white">Sant Namdev</div><div class="text-xs text-purple-400 mb-2">Tailor → Guru Granth Sahib Contributor</div><div class="text-xs text-gray-500">61 compositions in Guru Granth Sahib. Influenced Marathi and Punjabi traditions.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="text-2xl mb-2">✨</div><div class="text-sm font-semibold text-white">Kabir</div><div class="text-xs text-rose-400 mb-2">Weaver → Mystic Poet</div><div class="text-xs text-gray-500">Influenced both Hindu and Muslim traditions. "Neither Hindu nor Muslim — child of the Divine."</div></div>
+</div>
+<div class="mt-6 p-4 bg-dharma-400/5 border border-dharma-400/10 rounded-xl text-center"><div class="text-sm text-gray-400">Over <span class="text-dharma-400 font-bold">50+ major saints</span> from SC/ST/OBC communities enriched Sanatana Dharma across millennia — proving Dharma judges souls by devotion, not birth.</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="relative py-24 sm:py-32">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-quantum-950/20 to-transparent"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-green-400 tracking-widest uppercase mb-4"><span class="w-8 h-px bg-green-400/50"></span>Simulation Results<span class="w-8 h-px bg-green-400/50"></span></div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Evidence from <span class="text-green-400">Policy Simulations</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto text-lg">Hybrid quantum-classical simulations in climate adaptation and conflict resolution demonstrate QDG's practical value.</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="fiu gb p-7">
+<div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center"><iconify-icon icon="lucide:cloud-rain" width="20" class="text-blue-400"></iconify-icon></div><div><h3 class="text-sm font-semibold text-white">Climate Adaptation Policy</h3><p class="text-xs text-gray-500">Water allocation under drought — 3 community types, 127 configurations</p></div></div>
+<div class="mb-5 overflow-x-auto">
+<table class="w-full text-xs"><thead><tr class="border-b border-white/10"><th class="text-left text-gray-500 pb-2 pr-3">Stakeholder</th><th class="text-left text-gray-500 pb-2 pr-3">Population</th><th class="text-left text-gray-500 pb-2">Priority</th></tr></thead><tbody class="text-gray-400"><tr class="border-b border-white/5"><td class="py-2 pr-3">Urban Centers</td><td class="py-2 pr-3">2.3M</td><td class="py-2">Economic continuity</td></tr><tr class="border-b border-white/5"><td class="py-2 pr-3">Agricultural</td><td class="py-2 pr-3">800K</td><td class="py-2">Irrigation for livelihoods</td></tr><tr><td class="py-2 pr-3">Indigenous</td><td class="py-2 pr-3">150K</td><td class="py-2">Sacred site access</td></tr></tbody></table>
+</div>
+<div class="space-y-3">
+<div class="bg-red-500/5 border border-red-500/10 rounded-lg p-3"><div class="flex justify-between items-center mb-1"><span class="text-xs font-medium text-red-300">Urban-Priority: QEU<sub>D</sub> ≈ 0.73</span><iconify-icon icon="lucide:alert-circle" width="14" class="text-red-400"></iconify-icon></div><p class="text-xs text-gray-500">Strong efficiency but cultural harm detected — ceremonial water access reduced</p></div>
+<div class="bg-yellow-500/5 border border-yellow-500/10 rounded-lg p-3"><div class="flex justify-between items-center mb-1"><span class="text-xs font-medium text-yellow-300">Agricultural-Opt: QEU<sub>B</sub> ≈ 0.68</span><iconify-icon icon="lucide:alert-triangle" width="14" class="text-yellow-400"></iconify-icon></div><p class="text-xs text-gray-500">Unstable optimization — small cultural weighting shifts cause large allocation changes</p></div>
+<div class="bg-green-500/5 border border-green-500/10 rounded-lg p-3"><div class="flex justify-between items-center mb-1"><span class="text-xs font-medium text-green-300">Dharma-Guided: QEU<sub>total</sub> &lt; 0.35</span><iconify-icon icon="lucide:check-circle" width="14" class="text-green-400"></iconify-icon></div><p class="text-xs text-gray-500">Tailored per community type — 84% of peak performance with ethical balance</p></div>
+</div>
+</div>
+<div class="fiu gb p-7" style="transition-delay:.15s">
+<div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center"><iconify-icon icon="lucide:handshake" width="20" class="text-purple-400"></iconify-icon></div><div><h3 class="text-sm font-semibold text-white">Conflict Resolution Simulation</h3><p class="text-xs text-gray-500">Trade dispute — 3 nations, 89 resolution pathways</p></div></div>
+<div class="mb-5 overflow-x-auto">
+<table class="w-full text-xs"><thead><tr class="border-b border-white/10"><th class="text-left text-gray-500 pb-2 pr-3">Nation</th><th class="text-left text-gray-500 pb-2 pr-3">Priority</th><th class="text-left text-gray-500 pb-2">Inflexibility</th></tr></thead><tbody class="text-gray-400"><tr class="border-b border-white/5"><td class="py-2 pr-3">Nation A</td><td class="py-2 pr-3">Tech, IP protection</td><td class="py-2">0.70–0.85</td></tr><tr class="border-b border-white/5"><td class="py-2 pr-3">Nation B</td><td class="py-2 pr-3">Tech transfer, sovereignty</td><td class="py-2">0.80–0.90</td></tr><tr><td class="py-2 pr-3">Nation C</td><td class="py-2 pr-3">Revenue, non-alignment</td><td class="py-2">0.65–0.85</td></tr></tbody></table>
+</div>
+<div class="space-y-3">
+<div class="bg-red-500/5 border border-red-500/10 rounded-lg p-3"><div class="flex justify-between items-center mb-1"><span class="text-xs font-medium text-red-300">15 "Balanced" Agreements Flagged</span><iconify-icon icon="lucide:alert-circle" width="14" class="text-red-400"></iconify-icon></div><p class="text-xs text-gray-500">Hidden structural dependencies (QEU<sub>D</sub>: 0.68–0.79), fragility (QEU<sub>B</sub>: 0.71–0.82)</p></div>
+<div class="bg-red-500/5 border border-red-500/10 rounded-lg p-3"><div class="flex justify-between items-center mb-1"><span class="text-xs font-medium text-red-300">Third-Party Destabilization</span><iconify-icon icon="lucide:alert-triangle" width="14" class="text-red-400"></iconify-icon></div><p class="text-xs text-gray-500">QEU<sub>R</sub>: 0.73–0.86 — ripple effects on non-participant nations and climate goals</p></div>
+<div class="bg-green-500/5 border border-green-500/10 rounded-lg p-3"><div class="flex justify-between items-center mb-1"><span class="text-xs font-medium text-green-300">5 Dharma-Informed Pathways: QEU &lt; 0.40</span><iconify-icon icon="lucide:check-circle" width="14" class="text-green-400"></iconify-icon></div><p class="text-xs text-gray-500">Contextual differentiation per nation — stability probability &gt; 0.82</p></div>
+</div>
+</div>
+</div>
+<div class="fiu mt-8 bg-gradient-to-r from-quantum-950/50 to-dharma-950/30 border border-quantum-500/10 rounded-2xl p-6 sm:p-8 text-center">
+<iconify-icon icon="lucide:lightbulb" width="24" class="text-dharma-400 mb-3"></iconify-icon>
+<p class="text-lg text-white font-medium mb-2">Critical Finding</p>
+<p class="text-sm text-gray-400 max-w-2xl mx-auto">Quantum-AI expands the solution space and generates options that <span class="text-white">classical optimization misses entirely</span>. However, many "optimal" solutions carry <span class="text-saffron">hidden ethical risks</span> that conventional assessments cannot detect — but the QEU metric flags them reliably. <span class="text-quantum-400">Vedic principles then guide resolution</span> toward outcomes with stronger long-term stability.</p>
+</div>
+</div>
+</section>
+
+<!-- POLICY PROPOSALS -->
+<section id="pp" class="relative py-24 sm:py-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-saffron tracking-widest uppercase mb-4"><span class="w-8 h-px bg-saffron/50"></span>Actionable Proposals<span class="w-8 h-px bg-saffron/50"></span></div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Policy Proposals for <span class="text-saffron">Government</span> Action</h2>
+<p class="text-gray-400 max-w-2xl mx-auto text-lg">Specific, implementable recommendations for both the Government of West Bengal and the Government of India.</p>
+</div>
+<!-- WB -->
+<div class="fiu mb-10">
+<div class="flex items-center gap-3 mb-6"><div class="w-8 h-8 rounded-lg bg-saffron/10 flex items-center justify-center"><iconify-icon icon="lucide:map-pin" width="16" class="text-saffron"></iconify-icon></div><h3 class="text-lg font-semibold text-white">Government of West Bengal</h3><span class="text-xs bg-saffron/10 text-saffron px-2 py-0.5 rounded-md">8 Proposals</span></div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-01</span><span class="text-xs bg-green-500/10 text-green-400 px-1.5 py-0.5 rounded">Immediate</span></div><div class="text-sm font-medium text-white mb-1">Establish Bengal Quantum Ethics Task Force</div><div class="text-xs text-gray-500">Multi-disciplinary body under CM's office with quantum physicists, AI researchers, Vedic scholars, and civil servants.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-02</span><span class="text-xs bg-green-500/10 text-green-400 px-1.5 py-0.5 rounded">Immediate</span></div><div class="text-sm font-medium text-white mb-1">QEU Audit of Existing e-Governance Systems</div><div class="text-xs text-gray-500">Apply QEU metric to WB's digital platforms — Duare Sarkar, e-District, Khadya Sathi — identifying ethical blind spots.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-03</span><span class="text-xs bg-quantum-500/10 text-quantum-400 px-1.5 py-0.5 rounded">Medium-term</span></div><div class="text-sm font-medium text-white mb-1">Sundarbans QDG Living Lab</div><div class="text-xs text-gray-500">Apply quantum-enhanced climate adaptation with Dharma-guided ethics to Sundarbans mangrove management.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-04</span><span class="text-xs bg-quantum-500/10 text-quantum-400 px-1.5 py-0.5 rounded">Medium-term</span></div><div class="text-sm font-medium text-white mb-1">Sanatana Vidya Kendra in Every District</div><div class="text-xs text-gray-500">District-level centers integrating Dharmic ethics education, yoga/meditation training, and digital literacy.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-05</span><span class="text-xs bg-dharma-400/10 text-dharma-400 px-1.5 py-0.5 rounded">Long-term</span></div><div class="text-sm font-medium text-white mb-1">Bengal Quantum Dharma Institute</div><div class="text-xs text-gray-500">World's first research institute at quantum computing, AI governance, and Vedic philosophy intersection. Partnership with IISER Kolkata, S.N. Bose Centre.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-06</span><span class="text-xs bg-dharma-400/10 text-dharma-400 px-1.5 py-0.5 rounded">Long-term</span></div><div class="text-sm font-medium text-white mb-1">Dharma-Driven AI Procurement Policy</div><div class="text-xs text-gray-500">Mandate QEU assessment for all state AI procurement above ₹1 crore. Vedic ethical baseline as mandatory criterion.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-07</span><span class="text-xs bg-green-500/10 text-green-400 px-1.5 py-0.5 rounded">Immediate</span></div><div class="text-sm font-medium text-white mb-1">Bengal Renaissance 2.0 Cultural Policy</div><div class="text-xs text-gray-500">Recognize Bengal's quantum heritage (Bose, Saha) and spiritual heritage (Vivekananda, Tagore) as unified narrative.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-saffron">WB-08</span><span class="text-xs bg-quantum-500/10 text-quantum-400 px-1.5 py-0.5 rounded">Medium-term</span></div><div class="text-sm font-medium text-white mb-1">Spiritual Tourism + AI Governance Convergence</div><div class="text-xs text-gray-500">Annual summit at Belur Math / Dakshineswar combining Dharmic discourse with tech policy. Global positioning.</div></div>
+</div>
+</div>
+<!-- India -->
+<div class="fiu">
+<div class="flex items-center gap-3 mb-6"><div class="w-8 h-8 rounded-lg bg-quantum-500/10 flex items-center justify-center"><iconify-icon icon="lucide:landmark" width="16" class="text-quantum-400"></iconify-icon></div><h3 class="text-lg font-semibold text-white">Government of India</h3><span class="text-xs bg-quantum-500/10 text-quantum-400 px-2 py-0.5 rounded-md">7 Proposals</span></div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-quantum-400">IN-01</span><span class="text-xs bg-green-500/10 text-green-400 px-1.5 py-0.5 rounded">Immediate</span></div><div class="text-sm font-medium text-white mb-1">National Quantum Ethics Commission</div><div class="text-xs text-gray-500">Under MeitY and NITI Aayog — integrate QEU metric into India's National AI Strategy. Include Vedic scholars.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-quantum-400">IN-02</span><span class="text-xs bg-quantum-500/10 text-quantum-400 px-1.5 py-0.5 rounded">Medium-term</span></div><div class="text-sm font-medium text-white mb-1">QEU in AI Procurement Standards (GEM Portal)</div><div class="text-xs text-gray-500">Add QEU assessment as mandatory criterion for all AI system procurement on Government e-Marketplace.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-quantum-400">IN-03</span><span class="text-xs bg-dharma-400/10 text-dharma-400 px-1.5 py-0.5 rounded">Long-term</span></div><div class="text-sm font-medium text-white mb-1">Indian Institution for Cultural &amp; Civilizational Research</div><div class="text-xs text-gray-500">Integrate Sanatana wisdom with modern governance, technology, and economic strategy.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-quantum-400">IN-04</span><span class="text-xs bg-green-500/10 text-green-400 px-1.5 py-0.5 rounded">Immediate</span></div><div class="text-sm font-medium text-white mb-1">Global Scientific Forum for Interfaith AI Discourse</div><div class="text-xs text-gray-500">India-hosted neutral platform for scientific discussions on religion, morality, and AI ethics.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-quantum-400">IN-05</span><span class="text-xs bg-quantum-500/10 text-quantum-400 px-1.5 py-0.5 rounded">Medium-term</span></div><div class="text-sm font-medium text-white mb-1">QEU-Based Climate Policy Framework</div><div class="text-xs text-gray-500">Apply quantum-AI with Dharma ethics to India's climate adaptation — water-stressed regions, farmer welfare.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-quantum-400">IN-06</span><span class="text-xs bg-dharma-400/10 text-dharma-400 px-1.5 py-0.5 rounded">Long-term</span></div><div class="text-sm font-medium text-white mb-1">Mahakumbh Management Research Initiative</div><div class="text-xs text-gray-500">Fund research studying Mahakumbh's organizational innovations (AI, drones, self-regulation) as case studies for IIMs, IITs.</div></div>
+<div class="pc rounded-xl bg-white/[.02] p-5 sm:col-span-2"><div class="flex items-center gap-2 mb-2"><span class="text-xs font-bold text-quantum-400">IN-07</span><span class="text-xs bg-dharma-400/10 text-dharma-400 px-1.5 py-0.5 rounded">Long-term</span></div><div class="text-sm font-medium text-white mb-1">International QDG Standard (ISO-style)</div><div class="text-xs text-gray-500">Propose India-led international standard for culturally-grounded AI ethics — "ISO 57000: Quantum Dharma Governance Framework." Leverage G20 legacy and NAM leadership. Positions India as global authority on non-Western AI ethics, countering Eurocentric IEEE and EU AI Act frameworks.</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ROADMAP -->
+<section id="rm" class="relative py-24 sm:py-32">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-dharma-950/10 to-transparent"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+<div class="fiu text-center mb-16">
+<div class="inline-flex items-center gap-2 text-xs font-medium text-quantum-400 tracking-widest uppercase mb-4"><span class="w-8 h-px bg-quantum-400/50"></span>Implementation Path<span class="w-8 h-px bg-quantum-400/50"></span></div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Phased <span class="text-quantum-400">Implementation</span> Roadmap</h2>
+</div>
+<div class="relative max-w-3xl mx-auto">
+<div class="absolute left-6 top-0 bottom-0 w-0.5 tl rounded-full hidden sm:block"></div>
+<div class="space-y-8">
+<div class="fiu flex gap-6"><div class="hidden sm:flex flex-col items-center flex-shrink-0"><div class="w-12 h-12 rounded-full bg-saffron/10 border-2 border-saffron flex items-center justify-center z-10"><span class="text-xs font-bold text-saffron">P1</span></div></div><div class="flex-1 gb p-6"><div class="flex items-center gap-2 mb-2"><span class="sm:hidden text-xs font-bold text-saffron bg-saffron/10 px-2 py-0.5 rounded">Phase 1</span><h3 class="text-sm font-semibold text-white">Foundation (0–6 Months)</h3><span class="text-xs bg-green-500/10 text-green-400 px-1.5 py-0.5 rounded">Immediate</span></div><ul class="space-y-2 text-xs text-gray-400"><li class="flex gap-2"><iconify-icon icon="lucide:check" width="12" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>Constitute Bengal Quantum Ethics Task Force</li><li class="flex gap-2"><iconify-icon icon="lucide:check" width="12" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>Begin QEU audit of existing e-governance platforms</li><li class="flex gap-2"><iconify-icon icon="lucide:check" width="12" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>Launch National Quantum Ethics Commission advisory process</li><li class="flex gap-2"><iconify-icon icon="lucide:check" width="12" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>Pilot Sanatana Vidya Kendra in 5 districts</li><li class="flex gap-2"><iconify-icon icon="lucide:check" width="12" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>Host inaugural Global Interfaith AI Discourse conference</li></ul></div></div>
+<div class="fiu flex gap-6" style="transition-delay:.1s"><div class="hidden sm:flex flex-col items-center flex-shrink-0"><div class="w-12 h-12 rounded-full bg-quantum-500/10 border-2 border-quantum-500 flex items-center justify-center z-10"><span class="text-xs font-bold text-quantum-400">P2</span></div></div><div class="flex-1 gb p-6"><div class="flex items-center gap-2 mb-2"><span class="sm:hidden text-xs font-bold text-quantum-400 bg-quantum-500/10 px-2 py-0.5 rounded">Phase 2</span><h3 class="text-sm font-semibold text-white">Building (6–18 Months)</h3><span class="text-xs bg-quantum-500/10 text-quantum-400 px-1.5 py-0.5 rounded">Medium-term</span></div><ul class="space-y-2 text-xs text-gray-400"><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-quantum-400 mt-0.5 flex-shrink-0"></iconify-icon>Launch Sundarbans QDG Living Lab</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-quantum-400 mt-0.5 flex-shrink-0"></iconify-icon>Integrate QEU into GEM Portal AI procurement</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-quantum-400 mt-0.5 flex-shrink-0"></iconify-icon>Expand Sanatana Vidya Kendra to all districts</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-quantum-400 mt-0.5 flex-shrink-0"></iconify-icon>Launch QDG curriculum at 3 major universities</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-quantum-400 mt-0.5 flex-shrink-0"></iconify-icon>Begin QEU-based climate policy framework development</li></ul></div></div>
+<div class="fiu flex gap-6" style="transition-delay:.2s"><div class="hidden sm:flex flex-col items-center flex-shrink-0"><div class="w-12 h-12 rounded-full bg-dharma-400/10 border-2 border-dharma-400 flex items-center justify-center z-10"><span class="text-xs font-bold text-dharma-400">P3</span></div></div><div class="flex-1 gb p-6"><div class="flex items-center gap-2 mb-2"><span class="sm:hidden text-xs font-bold text-dharma-400 bg-dharma-400/10 px-2 py-0.5 rounded">Phase 3</span><h3 class="text-sm font-semibold text-white">Scaling (18–36 Months)</h3><span class="text-xs bg-dharma-400/10 text-dharma-400 px-1.5 py-0.5 rounded">Long-term</span></div><ul class="space-y-2 text-xs text-gray-400"><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-dharma-400 mt-0.5 flex-shrink-0"></iconify-icon>Inaugurate Bengal Quantum Dharma Institute</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-dharma-400 mt-0.5 flex-shrink-0"></iconify-icon>Establish Indian Institution for Cultural &amp; Civilizational Research</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-dharma-400 mt-0.5 flex-shrink-0"></iconify-icon>Launch Quantum Dharma Startup Ecosystem at Salt Lake</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-dharma-400 mt-0.5 flex-shrink-0"></iconify-icon>Propose International QDG Standard at global forums</li><li class="flex gap-2"><iconify-icon icon="lucide:circle" width="12" class="text-dharma-400 mt-0.5 flex-shrink-0"></iconify-icon>Full Dharma-driven AI procurement policy operational</li></ul></div></div>
+<div class="fiu flex gap-6" style="transition-delay:.3s"><div class="hidden sm:flex flex-col items-center flex-shrink-0"><div class="w-12 h-12 rounded-full bg-white/5 border-2 border-white/20 flex items-center justify-center z-10"><span class="text-xs font-bold text-white">P4</span></div></div><div class="flex-1 gb p-6"><div class="flex items-center gap-2 mb-2"><span class="sm:hidden text-xs font-bold text-white bg-white/5 px-2 py-0.5 rounded">Phase 4</span><h3 class="text-sm font-semibold text-white">Global Leadership (36+ Months)</h3><span class="text-xs bg-purple-500/10 text-purple-400 px-1.5 py-0.5 rounded">Vision</span></div><ul class="space-y-2 text-xs text-gray-400"><li class="flex gap-2"><iconify-icon icon="lucide:star" width="12" class="text-purple-400 mt-0.5 flex-shrink-0"></iconify-icon>India leads international QDG standard adoption</li><li class="flex gap-2"><iconify-icon icon="lucide:star" width="12" class="text-purple-400 mt-0.5 flex-shrink-0"></iconify-icon>QDG framework adopted by 10+ national governments</li><li class="flex gap-2"><iconify-icon icon="lucide:star" width="12" class="text-purple-400 mt-0.5 flex-shrink-0"></iconify-icon>Bengal recognized as global hub for ethical AI governance</li><li class="flex gap-2"><iconify-icon icon="lucide:star" width="12" class="text-purple-400 mt-0.5 flex-shrink-0"></iconify-icon>Quantum Dharma governance embedded in UN AI frameworks</li></ul></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="relative py-24 sm:py-32 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-saffron/[.03] to-transparent"></div>
+<div class="ow bottom-0 left-0 text-saffron" style="font-family:serif">ॐ</div>
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+<div class="fiu">
+<div class="sk text-dharma-400/50 text-xl mb-6">धर्मो रक्षति रक्षितः</div>
+<h2 class="st text-3xl sm:text-4xl font-bold text-white tracking-tight mb-6">Dharma Protects Those Who<br>Protect Dharma</h2>
+<p class="text-lg text-gray-400 leading-relaxed mb-8 max-w-3xl mx-auto">The Quantum Dharma Governance Framework represents a <span class="text-white">paradigm shift</span> — not merely a technical innovation, but a civilizational assertion. It demonstrates that India's ancient philosophical traditions possess the conceptual depth to address humanity's most complex governance challenges in the age of artificial intelligence.</p>
+<p class="text-base text-gray-500 leading-relaxed mb-10 max-w-3xl mx-auto">By integrating Ṛta, Dharma, and Ahimsa with quantum-enhanced AI, we create governance systems that are <span class="text-gray-300">fairer</span> (protecting minorities that utilitarianism sacrifices), <span class="text-gray-300">more resilient</span> (capturing non-local ripple effects), and <span class="text-gray-300">culturally grounded</span> (rooted in proven civilizational wisdom rather than imported frameworks). West Bengal, with its unmatched renaissance heritage and quantum legacy, is the natural birthplace of this revolution.</p>
+<div class="fiu inline-block bg-white/[.03] border border-white/10 rounded-2xl px-8 py-6 mb-10">
+<div class="sk text-dharma-400 text-lg mb-2">ॐ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः।</div>
+<div class="sk text-dharma-400 text-lg mb-3">सर्वे भद्राणि पश्यन्तु मा कश्चिद् दुःखभाग्भवेत्।।</div>
+<div class="text-xs text-gray-500">May all beings be happy, may all beings be healthy,<br>May all beings experience prosperity, may none suffer from misery.</div>
+</div>
+<div class="fiu flex flex-col sm:flex-row items-center justify-center gap-3">
+<button onclick="window.print()" class="group flex items-center gap-2 bg-gradient-to-r from-saffron to-orange-600 text-white font-medium px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:shadow-saffron/20 transition-all duration-300"><iconify-icon icon="lucide:printer" width="18"></iconify-icon>Print / Save as PDF</button>
+<a href="mailto:?subject=Quantum%20Dharma%20Governance%20Framework" class="flex items-center gap-2 bg-white/5 border border-white/10 text-white font-medium px-8 py-3.5 rounded-xl hover:bg-white/10 transition-all duration-300"><iconify-icon icon="lucide:share-2" width="18" class="text-quantum-400"></iconify-icon>Share with Decision Makers</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REFERENCES -->
+<section class="relative py-16 border-t border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<details class="fiu">
+<summary class="cursor-pointer text-sm font-medium text-gray-500 hover:text-white transition-colors flex items-center gap-2"><iconify-icon icon="lucide:book-open" width="16"></iconify-icon>Key References &amp; Citations<iconify-icon icon="lucide:chevron-down" width="14" class="transition-transform"></iconify-icon></summary>
+<div class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-gray-600 leading-relaxed">
+<div>Chakrabarti, K. (2025). Quantum Ethical Uncertainty and Dharma-Driven AI. Zenodo. DOI: 10.5281/zenodo.17259701</div>
+<div>Cerezo, M. et al. (2021). Variational quantum algorithms. Nature Reviews Physics, 3, 625–644.</div>
+<div>Childs, A.M. et al. (2018). Quantum algorithms for quantum simulation. Reviews of Modern Physics, 91, 015002.</div>
+<div>Dunjko, V. &amp; Briegel, H.J. (2018). Machine learning &amp; AI in the quantum domain. Reports on Progress in Physics, 81, 074001.</div>
+<div>Endo, S. et al. (2021). Hybrid quantum-classical algorithms. J. Physical Society of Japan, 90, 032001.</div>
+<div>Harvard Business Review (2013). Mahakumbh as organizational case study.</div>
+<div>Hongladarom, S. &amp; Bandasak, T. (2024). Non-Western AI ethics. AI &amp; Society.</div>
+<div>Koirala, B. &amp; Ghimire, S. (2023). Vedic concepts in technology ethics. Journal of Dharma Studies.</div>
+<div>Kumar, A. (2025). Indra's Net and interconnected ethics. Philosophy East &amp; West.</div>
+<div>Lutz, A. et al. (2015). Attention regulation in meditation. Trends in Cognitive Sciences, 9(4).</div>
+<div>Mishra, M. &amp; Mishra, R. (2024). Philosophical foundations of inclusivity. Int. J. Cross-Cultural Studies, 16(3).</div>
+<div>Perrier, L. (2021). Ethics of quantum computing. Philosophy &amp; Technology, 34, 353–381.</div>
+<div>Possati, L. (2023). Ethical challenges of quantum computing. AI &amp; Society, 38, 2357–2374.</div>
+<div>Prasad, R.N. (2021). Ethical leadership in ancient Indian texts. Leadership &amp; Org. Development Journal, 42(6).</div>
+<div>Sambasivan, N. et al. (2021). "Everyone wants to do the model work." Proc. CSCW.</div>
+<div>UN Population Report (2023). Fertility rates below replacement levels.</div>
+<div>Wirtz, B.W. et al. (2020). AI and public administration. Public Administration Review, 79(6).</div>
+</div>
+</details>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative py-12 border-t border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="flex flex-col items-center text-center">
+<div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-saffron to-quantum-500 flex items-center justify-center"><iconify-icon icon="lucide:atom" width="16" class="text-white"></iconify-icon></div><span class="text-sm font-semibold text-white">QDG Framework</span></div>
+<div class="mb-3"><span class="text-sm text-gray-300 font-medium">Created by Kallol Chakrabarti, Global Independent Researcher</span></div>
+<div class="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-600 mb-4">
+<span class="flex items-center gap-1"><iconify-icon icon="lucide:mail" width="12"></iconify-icon>kallolchitralimagicpen@gmail.com</span>
+<span class="flex items-center gap-1"><iconify-icon icon="lucide:fingerprint" width="12"></iconify-icon>ORCID: 0009-0007-4971-8936</span>
+</div>
+<div class="text-xs text-gray-700 max-w-lg">This framework is based on computational simulations and secondary literature. No human participants were involved. Future participatory research will require formal ethical review. DOI: 10.5281/zenodo.17259701</div>
+<div class="mt-6 sk text-dharma-400/20 text-sm">ॐ शान्तिः शान्तिः शान्तिः</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Quantum particles
+(function(){
+var c=document.getElementById('qc'),x=c.getContext('2d'),p=[],n=60,d=150;
+function r(){c.width=window.innerWidth;c.height=window.innerHeight}
+r();window.addEventListener('resize',r);
+function P(){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.s=Math.random()*2+.5;this.o=Math.random()*.3+.1;var cl=['99,102,241','255,107,0','251,191,36'];this.c=cl[Math.floor(Math.random()*3)]}
+P.prototype.u=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>c.width)this.vx*=-1;if(this.y<0||this.y>c.height)this.vy*=-1};
+P.prototype.d=function(){x.beginPath();x.arc(this.x,this.y,this.s,0,Math.PI*2);x.fillStyle='rgba('+this.c+','+this.o+')';x.fill()};
+for(var i=0;i<n;i++)p.push(new P);
+(function a(){x.clearRect(0,0,c.width,c.height);for(var i=0;i<p.length;i++){for(var j=i+1;j<p.length;j++){var dx=p[i].x-p[j].x,dy=p[i].y-p[j].y,ds=Math.sqrt(dx*dx+dy*dy);if(ds<d){var op=(1-ds/d)*.08;x.beginPath();x.moveTo(p[i].x,p[i].y);x.lineTo(p[j].x,p[j].y);x.strokeStyle='rgba(99,102,241,'+op+')';x.lineWidth=.5;x.stroke()}}p[i].u();p[i].d()}requestAnimationFrame(a)})();
+})();
+
+// Scroll progress
+window.addEventListener('scroll',function(){var s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('sp').style.width=(s/h*100)+'%'});
+
+// Mobile menu
+document.getElementById('mmb').addEventListener('click',function(){document.getElementById('mm').classList.toggle('hidden')});
+document.querySelectorAll('#mm a').forEach(function(l){l.addEventListener('click',function(){document.getElementById('mm').classList.add('hidden')})});
+
+// Intersection observer
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');e.target.querySelectorAll('.qf').forEach(function(b){var w=b.getAttribute('data-width');if(w)setTimeout(function(){b.style.width=w+'%'},300)});e.target.querySelectorAll('.ct').forEach(function(c){var t=parseInt(c.getAttribute('data-target')),s=c.getAttribute('data-suffix')||'';if(t&&!c.dataset.an){c.dataset.an='1';(function(el,tgt,sfx){var cur=0,inc=tgt/40,timer=setInterval(function(){cur+=inc;if(cur>=tgt){cur=tgt;clearInterval(timer)}el.textContent=Math.round(cur)+sfx},30)})(c,t,s)}})}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fiu,.sc').forEach(function(el){obs.observe(el)});
+
+// Tabs
+document.querySelectorAll('.tb').forEach(function(btn){btn.addEventListener('click',function(){var id=this.getAttribute('data-tab');document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('a')});document.querySelectorAll('.tc').forEach(function(c){c.classList.remove('a')});this.classList.add('a');document.getElementById('t-'+id).classList.add('a')})});
+</script>
+</body>
+</html>
